@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+<!DOCTYPE> 声明必须是HTML文档的第一行，位于<html>标签之前
+它是指示web浏览器关于页面使用哪个HTML版本进行编写的指令
+DOCTYPE 声明没有结束标签，对大小写不敏感
+-->
+<html lang="en"><!--html 标志文档的开始和结束lang 向浏览器声明网页的语言-->
+<head><!--头部-->
+    <meta charset="UTF-8"><!--声明文档使用的字符集-->
+    <title>PY's 2048</title><!--标题-->
+    <link type="text/css" rel="stylesheet" href="2048_py_style.css"/><!--链接外部样式表-->
+</head>
+<body><!--主体-->
+<div class="container"><!--->
+    <div class="scores">
+        <div class="score-container">
+            SCORE:
+            <div class="score">
+                <div id="score">0</div>
+                <div class="add" id="add"></div>
+            </div>
+        </div>
+    </div>
+    <div class="game">
+        <div id="tile-container" class="tile-container"></div>
+        <div class="end" id="end">游戏结束<button class="button not-recommended__item js-restart-button" id="try-again">再试一次</button></div>
+    </div>
+
+    <div class="not-recommended">
+        <button class="button not-recommended__item js-restart-button" id="restart">重新开始</button>
+        <span class="not-recommended__annotation"></span>
+    </div>
+    <script type="text/javascript" src="2048_py_main.js"></script><!--引入js-->
+</div>
+</body>
+</html><!--文档结束-->
