@@ -57,6 +57,7 @@ h1 {
     text-align: center;
 }
 
+
 .scores {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -81,7 +82,22 @@ h1 {
     line-height: 1;
     color: #555;
 }
-
+.best{
+    margin-left: 1rem;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.5rem;
+    vertical-align: middle;
+    text-align: left;
+}
+#best {
+    margin-left: 1rem;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.5rem;
+    vertical-align: middle;
+    text-align: left;
+}
 .score {
     margin-left: 1rem;
     position: relative;
