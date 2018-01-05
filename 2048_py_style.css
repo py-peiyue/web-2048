@@ -35,7 +35,9 @@ strong {
     font-size: 0.9rem;
     color: #9a9a95;
 }
-
+kong{
+    opacity:0;
+}
 h1 {
     font-size: 2.2rem;
 }
