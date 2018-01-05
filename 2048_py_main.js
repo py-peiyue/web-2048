@@ -26,33 +26,20 @@ var _extends = Object.assign || function (target) {
 var game = null;//创建游戏变量
 var scoreId;
 scoreId = document.getElementById('score');
-/*
- * 定义scoreId变量，并将html文档中id=score的第一个对象的引用赋值给它
- *
- * 每个载入浏览器的 HTML 文档都会成为 Document 对象。
- * Document 对象使我们可以从脚本中对 HTML 页面中的所有元素进行访问。
- * 提示：Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。
- * 
- * getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。
- * HTML DOM 定义了多种查找元素的方法，除了 getElementById() 之外，
- * 还有 getElementsByName() 和 getElementsByTagName()。
- * 不过，如果您需要查找文档中的一个特定的元素，最有效的方法是 getElementById()。
- * 在操作文档的一个特定的元素时，最好给该元素一个 id 属性，为它指定一个（在文档中）唯一的名称，
- * 然后就可以用该id查找想要的元素。
- */
+var bestId = document.getElementById('best');
 var addId = document.getElementById('add');
-//定义addId变量，并将html文档中id=add的第一个对象的引用赋值给它
+
 var endId = document.getElementById('end');
-//定义endId变量，并将html文档中id=edd的第一个对象的引用赋值给它
+
 var size = 4;
-//定义size变量 赋值为4
+
 var nextId = 1;
-//定义nextId变量 赋值为1
+
 var score = 0;
-//定义score变量 赋值为0
-function initGame() {//初始化游戏
+
+var best =0;
+function initGame() {
     game = Array(size * size).fill(null); 
-    //game变量用一个4*4的数组表示游戏4*4的格子
 }
 
 function updateDOM(before, after) {
@@ -338,6 +325,10 @@ function shiftGameLeft(gameGrid) {
             addId.classList.remove("active");
         }, 800);
     }
+    if(bestScore<score) {
+        bestScore=score;
+        bestId.innerHTML = score;
+    }
     return newGameState;
 }
 
@@ -366,7 +357,37 @@ for (var i = 0; i < length; i++) {
         });
     };
 };
+var buttons_h = document.querySelectorAll(".js-help-button");
+var length_h = buttons_h.length;
+for (var i = 0; i < length_h; i++) {
 
+    if (document.addEventListener) {
+        buttons_h[i].addEventListener("click", function () {
+            alert(
+                "开始时随机出现两个数字出现的数字仅可能为2或4\n" +
+                "上下左右四个方向键控制棋盘内的数字上下左右移动\n" +
+                "玩家选择的方向上若有相同的数字则合并，\n" +
+                "每次移动可以同时合并，但不可以连续合并 \n" +
+                "合并所得的所有新生成数字相加即为该步的有效得分\n" +
+                "玩家选择的方向上的行或列前方有空格则出现位移\n" +
+                "每移动一步棋盘的空位(无数字处)随机出现一个数字(2或4)\n" +
+                "棋盘被数字填满，无法进行有效移动，判负，游戏结束\n" +
+                "棋盘上出现2048，判胜，游戏结束"
+                );
+        });
+    } else {
+        buttons_h[i].attachEvent("onclick", function () {
+            alert("开始时棋盘内随机出现两个数字，出现的数字仅可能为2或4\n" +
+                "　　玩家可以选择上下左右四个方向，若棋盘内的数字出现位移或合并，视为有效移动\n" +
+                "　　玩家选择的方向上若有相同的数字则合并，每次有效移动可以同时合并，但不可以连续合并\n" +
+                "　　合并所得的所有新生成数字想加即为该步的有效得分\n" +
+                "　　玩家选择的方向行或列前方有空格则出现位移\n" +
+                "　　每有效移动一步，棋盘的空位(无数字处)随机出现一个数字(依然可能为2或4)\n" +
+                "　　棋盘被数字填满，无法进行有效移动，判负，游戏结束\n" +
+                "　　棋盘上出现2048，判胜，游戏结束");
+        });
+    };
+}
 document.addEventListener("keydown", handleKeypress);
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
