@@ -37,7 +37,7 @@ var nextId = 1;
 
 var score = 0;
 
-var best =0;
+var bestScore =0;
 function initGame() {
     game = Array(size * size).fill(null); 
 }
